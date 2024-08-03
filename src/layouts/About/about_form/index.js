@@ -40,7 +40,7 @@ function AboutFormData() {
     }
 
     const formData = new FormData(form.current);
-
+    formData.append("aboutImage", selectedFile);
     setLoading(dispatch, true);
 
     try {
@@ -189,15 +189,7 @@ function AboutFormData() {
                       <InputLabel sx={{ fontSize: "1.0rem", fontWeight: 500, marginBottom: "8px" }}>
                         Upload Images
                       </InputLabel>
-                      <SoftButton
-                        component={Link}
-                        variant="gradient"
-                        color="dark"
-                        onClick={handleOpen}
-                      >
-                        <Icon sx={{ fontWeight: "bold" }}>add</Icon>
-                        &nbsp; Add More
-                      </SoftButton>
+                     
                     </SoftBox>
 
                     <DropzoneArea
