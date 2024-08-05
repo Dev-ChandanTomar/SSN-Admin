@@ -36,11 +36,12 @@ const deleteAboutData = (id, getaboutdata) => async () => {
   try {
     console.log(id);
     const response = await ApiClient.deleteData(deleteAbout, id);
+    console.log("ddd",response)
     toast.success(response?.message);
     getaboutdata();
   } catch (error) {
     console.error("Error deleting:", error);
-    toast.error(error.response?.data?.message ?? "Failed to delete. Please try again later.");
+   // toast.error(error.response?.data?.message ?? "Failed to delete. Please try again later.");
   }
 };
 const aboutView = {

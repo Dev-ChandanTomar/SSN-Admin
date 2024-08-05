@@ -40,12 +40,17 @@ class CustomUploadAdapter {
   abort() {}
 }
 const EventForm = ({ data, type }) => {
+
+  console.log("data",JSON.stringify(data))
+  
+
   const [eventImage, setEventImage] = useState(data?.eventImage || "");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [users, setUsers] = useState([]);
   const [organizer, setOrganizer] = useState(data?.organizer || "");
-
+  // const [editorData, setEditorData] = useState(data?.description|| "");
+  const [editorData, setEditorData] = useState(data?.discription || "");
   useEffect(() => {
     console.log("Data received:", data);
 
@@ -112,7 +117,7 @@ const EventForm = ({ data, type }) => {
         variant="standard"
         sx={{ marginBottom: "20px" }}
       />
-      <SoftBox mb={2} width="100%">
+      {/* <SoftBox mb={2} width="100%">
         <div>
           <InputLabel sx={{ fontSize: "1.0rem", fontWeight: 500, marginBottom: "8px" }}>
             Discription
@@ -122,14 +127,29 @@ const EventForm = ({ data, type }) => {
             config={{
               extraPlugins: [CustomUploadAdapterPlugin],
             }}
-            data={data.discription || ""}
+            data={data?.description || ""}
             onChange={(event, editor) => {
               const data = editor.getData();
               setEditorData(data);
             }}
+            
           />
+     
         </div>
-      </SoftBox>
+      </SoftBox> */}
+      <TextField
+        autoFocus
+        required
+        margin="dense"
+        id="description"
+        name="description"
+        defaultValue={data?.description}
+        label="description"
+        type="text"
+        fullWidth
+        variant="standard"
+        sx={{ marginBottom: "20px" }}
+      />
       <TextField
         autoFocus
         required

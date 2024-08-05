@@ -33,25 +33,29 @@ function AboutFormData() {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-
+    console.log("tere me kay aa rha he",form.current)
     if (formErrors.src) {
       toast.warn("Please correct the errors in the form.");
       return;
     }
 
     const formData = new FormData(form.current);
-    formData.append("aboutImage", selectedFile);
+    
+  
     setLoading(dispatch, true);
 
     try {
       let response;
 
       if (isNewAbout) {
+        formData.append("aboutImage", selectedFile);
         response = await ApiClient.createData(createAbout, formData);
         setDialog(dispatch, [response]);
+        setSelectedFile(null)
         navigate("/about");
       } else {
         formData.append("id", id);
+        formData.append("aboutImage", selectedFile);
         response = await ApiClient.putData(updateAbout, formData);
         setDialog(dispatch, [response]);
         navigate("/about");
@@ -203,6 +207,7 @@ function AboutFormData() {
                       maxFileSize={5000000}
                       filesLimit={1}
                       name="image"
+                   
                     />
 
                     {file.length > 0 && (

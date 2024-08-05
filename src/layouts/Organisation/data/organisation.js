@@ -73,7 +73,7 @@ const deleteOrganisations = (id, getAllOrganisations) => async () => {
     console.log(id);
     const response = await ApiClient.deleteData(deleteOrganisation, id);
     toast.success(response?.message);
-    getAllOrganisations();
+    // getAllOrganisations();
   } catch (error) {
     console.error("Error deleting:", error);
     toast.error(error.response?.data?.message ?? "Failed to delete. Please try again later.");

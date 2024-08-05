@@ -80,6 +80,9 @@ function Events() {
   const addEvents = async (formData) => {
     startLoading(dispatch, true);
     try {
+      for (let [key, value] of formData.entries()) {
+        console.log(`${key}: ${value}`);
+      }
       const response = await ApiClient.createData(createEvent, formData);
       getAllEvents();
       setDialog(dispatch, [response]);
@@ -117,7 +120,7 @@ function Events() {
                       status: "form",
                       message: "CREATE NEW Events",
                       action: "Add New",
-                      children: <EventForm type={type} />,
+                      children: <EventForm  type={type} />,
                     },
                   ]);
                 }}

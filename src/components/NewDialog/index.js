@@ -26,6 +26,7 @@ export default function NewFormDialog({ open, setOpen, data }) {
             event.preventDefault();
             const formData = new FormData(event.currentTarget);
             data.call(formData);
+            handleClose()
           },
         }}
       >
